@@ -1,3 +1,4 @@
+//Local date
 var options = {
   weekday: "long",
   year: "numeric",
@@ -38,7 +39,6 @@ $(document).ready(function() {
       e.preventDefault();
 
       city = $('#search-city').val();
-
       const API_KEY = "a2ad63e0576647360495140bd811409e";
       var url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
 
@@ -51,11 +51,16 @@ $(document).ready(function() {
 
         longlat = `${lat},${lon}`;
         weatherApi = darkSkyUrl + longlat + "?exclude=minutely,hourly,daily";
-        console.log(weatherApi);
-        $("#location").html(city + "," + country) ;
+
+        let capitalizedCity = capitalize(city);
+        city = capitalizedCity;
+        $("#location").html(city + "," + country);
 
         getWeather(weatherApi);
 
+        function capitalize(name) {
+          return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+        }
       });
     });
 
@@ -64,6 +69,8 @@ $(document).ready(function() {
   }
 });
 
+
+//Using the API Weather Url and storing it as a function
 function getWeather(weatherApi) {
   $.ajax({
     type: "GET",
@@ -77,12 +84,13 @@ function getWeather(weatherApi) {
     var skycons = new Skycons({
       "color": "white"
     });
-    // on Android, a nasty hack is needed: {"resizeClear": true}
 
     // you can add a canvas by the canvas DOM element itself.
     skycons.add(document.getElementById("animated-icon"), icon);
     // start animation!
     skycons.play();
+
+    //Updating the weather parameters
     var temp = Math.round(data.currently.temperature);
     var tempC = Math.round((temp - 32) * 5 / 9);
     $("#temperature").text(temp + "°");
