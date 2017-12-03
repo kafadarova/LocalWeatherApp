@@ -1,8 +1,47 @@
+
+.content{
+  height: 100vh;
+  margin-bottom: 50px;
+  box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#F9AC00, #FFE96E); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#F9AC00, #FFE96E); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#F9AC00, #FFE96E); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#F9AC00, #FFE96E); /* Standard syntax */
+}
+
 .justify-content-start{
     text-align: center;
+    margin: 20px 0 25px 0;
 }
-.content{
+
+.temp-toggle {
+	margin-top: 10px;
+	padding-right: 25px; }
+}
+
+div.col-xs-12.text-center p#temperature {
+  margin-top: 30px;
+	font-size: 50px !important;
+  font-weight: bold;
+}
+
+#animated-icon  {
+	max-width: 40%;
+  margin-bottom: 30px !important;
+}
+#conditions{
   margin: auto;
-  background-color:pink;
 }
-  
+
+.form{
+  margin: 50px auto;
+   width: 50%;
+   padding: 10px;
+}
+
+footer{
+ text-align: center;
+  margin: auto;
+  width: 50%;
+}
