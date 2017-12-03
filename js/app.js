@@ -29,12 +29,14 @@ $(document).ready(function() {
 
     // Dark Sky API
     const DARK_SKY_KEY = "21f663e2e8b722d4e23b5749bcbcd4e4";
-    var url = `https://api.darksky.net/forecast/${DARK_SKY_KEY}/`;
-    var weatherApi = url + longlat + "?exclude=minutely,hourly,daily";
+    var darkSkyUrl = `https://api.darksky.net/forecast/${DARK_SKY_KEY}/`;
+    var weatherApi = darkSkyUrl + longlat + "?exclude=minutely,hourly,daily";
+    console.log(weatherApi);
 
-    // Testing
+    // Get an input value and fetch data for it
     $('#search-city-btn').click(function(e) {
       e.preventDefault();
+
       city = $('#search-city').val();
 
       const API_KEY = "a2ad63e0576647360495140bd811409e";
@@ -44,11 +46,15 @@ $(document).ready(function() {
         var rawJson = JSON.stringify(data);
         var json = JSON.parse(rawJson);
         country = json.sys.country;
+        let lon = json.coord.lon;
+        let lat = json.coord.lat;
+
+        longlat = `${lat},${lon}`;
+        weatherApi = darkSkyUrl + longlat + "?exclude=minutely,hourly,daily";
+        console.log(weatherApi);
         $("#location").html(city + "," + country) ;
 
-        let url = ;
-
-        // getWeather(weatherApi);
+        getWeather(weatherApi);
 
       });
     });
