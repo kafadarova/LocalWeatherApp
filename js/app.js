@@ -76,7 +76,9 @@ function getWeather(weatherApi) {
     type: "GET",
     url: weatherApi,
     dataType: "jsonp",
-    success: displayWeather
+    success: displayWeather,
+    error: error: function( data ) {
+      alert( "ERROR:  " + data );
   });
 
   function displayWeather(data) {
