@@ -16,7 +16,9 @@ $(document).ready(function() {
   $.ajax({
     type: "GET",
     url: "https://ipinfo.io/json/",
-    success: coordinates
+    success: coordinates,
+    error: function() {
+        alert("Error retrieving search results, please refresh the page");
   });
 
   // coordinates callback function
@@ -77,8 +79,8 @@ function getWeather(weatherApi) {
     url: weatherApi,
     dataType: "jsonp",
     success: displayWeather,
-    error: error: function( data ) {
-      alert( "ERROR:  " + data );
+    error: function() {
+        alert("Error retrieving search results, please refresh the page");
   });
 
   function displayWeather(data) {
